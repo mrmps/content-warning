@@ -58,7 +58,7 @@ $strOut	= '<!DOCTYPE html>'
  ******************************************************************************/
 
  $id = uniqid();
- $result = $description . '_contentwarning_' . $id . '.html';
+ $result = 'https://contentwarning.link/' . $description . $id . '.html';
 
 
 
