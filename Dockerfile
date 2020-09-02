@@ -1,18 +1,14 @@
-FROM composer/composer:php7 as vendor
+-FROM composer/composer:php7 as vendor
++FROM composer:latest as vendor
 
-WORKDIR /tmp/
+ WORKDIR /tmp/
 
-COPY composer.json composer.json
-COPY composer.lock composer.lock
+@@ -14,5 +14,7 @@ RUN composer install \
 
-RUN composer install \
-    --ignore-platform-reqs \
-    --no-interaction \
-    --no-plugins \
-    --no-scripts \
-    --prefer-dist
+ FROM php:7.2-apache-stretch
 
-FROM php:7.2-apache-stretch
-
-COPY . /var/www/html
-COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
++EXPOSE 80
++
++COPY --from=vendor /tmp/vendor /var/www/html/vendor
+ COPY . /var/www/html
+-COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
