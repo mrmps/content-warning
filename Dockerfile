@@ -1,14 +1,13 @@
--FROM composer/composer:php7 as vendor
-+FROM composer:latest as vendor
+FROM composer:latest as vendor
 
- WORKDIR /tmp/
+WORKDIR /tmp/
 
 @@ -14,5 +14,7 @@ RUN composer install \
 
- FROM php:7.2-apache-stretch
+FROM php:7.2-apache-stretch
 
-+EXPOSE 80
-+
-+COPY --from=vendor /tmp/vendor /var/www/html/vendor
- COPY . /var/www/html
--COPY --from=vendor /tmp/vendor/ /var/www/html/vendor/
+EXPOSE 80
+
+
+COPY --from=vendor /tmp/vendor /var/www/html/vendor
+COPY . /var/www/html
