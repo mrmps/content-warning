@@ -10,7 +10,7 @@
           <form class = "form-horizontal"
           id="frmVoucher"
           method="post"
-          action="content-warning.php.php">
+          action="content-warning.php">
           <h1> Build a content-warning</h1>
           <div class = "form-group">
             <input
