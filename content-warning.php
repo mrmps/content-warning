@@ -58,13 +58,15 @@ $strOut	= '<!DOCTYPE html>'
  ******************************************************************************/
 
  $id = uniqid();
- $result = 'https://contentwarning.link/' . $description . $id . '.html';
+ $result = $description . $id . '.html';
 
 
 
 $f = fopen($result, "w");
 fwrite($f, $strOut);
 fclose($f);
+
+ $result = 'https://contentwarning.link/' . $description . $id . '.html';
 
 
 /******************************************************************************
