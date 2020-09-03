@@ -72,7 +72,7 @@ $strOut	= '<!DOCTYPE html>'
 
 //  $result = $description . '_'. $filteredLink . '+' . $id . '.html';
 $result = 'https://contentwarning.link/' . $description . '_' . $id . '.html' . '?r=' . $link;
-$resultBack = 'https://contentwarning.link/' . $description . '_' . $id . '.html';
+$resultBack =  $description . '_' . $id . '.html';
  // $result = 'https://contentwarning.link/' . $description . $id . '.html';
 
 
