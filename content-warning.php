@@ -71,7 +71,7 @@ $strOut	= '<!DOCTYPE html>'
 //  $filteredLink = str_replace(':', ';', $filteredLink);
 
 //  $result = $description . '_'. $filteredLink . '+' . $id . '.html';
-$result = 'https://contentwarning.link/' . $description . '_' . $id . '.html' . '?r=' . $link;
+$result = 'https://contentwarning.link/' . $description . '_' . $id . '.html' . '?r=' . $httpLink;
 $resultBack =  $description . '_' . $id . '.html';
  // $result = 'https://contentwarning.link/' . $description . $id . '.html';
 
@@ -167,7 +167,7 @@ button {
 </style>
   </head>
 <body>
-<p><a href="'. $resultBack . '">Click here</a> to test if the build worked. </p>
+<p><a href="'. $result . '">Click here</a> to test if the build worked. </p>
 <input type="text" value="'. $result . '" id="myInput">
 <button onclick="myFunction()">Copy filtered link</button>
 
