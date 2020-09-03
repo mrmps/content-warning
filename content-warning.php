@@ -5,10 +5,10 @@
  * the full array list name whenever we want to use the values.               *
  * ****************************************************************************/
 
-$headline	=	$_POST['inHeadline'];
-$opening	=	$_POST['inOpening'];
-$link     = $_POST['siteLink'];
-$description = $_POST['userDescription'];
+$headline	=	htmlspecialchars($_POST['inHeadline']);
+$opening	=	htmlspecialchars($_POST['inOpening']);
+$link     = htmlspecialchars($_POST['siteLink']);
+$description = htmlspecialchars($_POST['userDescription']);
 
 function addhttp($url) {
     if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
@@ -17,7 +17,7 @@ function addhttp($url) {
     return $url;
 }
 
-$link = addhttp($link);
+$httpLink = addhttp($link);
 
 $description = str_replace(' ', '_', $description);
 // $description = preg_replace("/[^a-zA-Z]+/", "", $input);
@@ -40,17 +40,25 @@ $strOut	= '<!DOCTYPE html>'
 . '</head>'
 . '<body>'
 . '<div>'
-. '<img src="https://i.ibb.co/L1c6J6F/attention-303861-340.webp" class="warning_image">'
+. '<img src="https://www.redditstatic.com/desktop2x/img/content-gate-icons/nsfw.png" class="warning_image">'
 . '</div>'
 . '<div class = "text_container">'
 . '<h2 class = "warning_header">' . $headline . '</h2>'
 . '<h3 class="warning_text">' . $opening . '</h3>'
 . '</div>'
 . '<div class="button_container">'
-. '<a class="no_button all_button" href="javascript:history.back()">No</a> <a class="yes_button all_button" href="' . $link . '">Yes</a>'
+. '<a class="no_button all_button" href="javascript:history.back()">No</a> <a id = "myLink" class="yes_button all_button" href="Invalid Link">Yes</a>'
 . '</div>'
 . '</div>'
 . '</body>'
+. '<script>'
+. 'console.log("test"); '
+. 'var givenURL = new URLSearchParams(location.search).get(\'r\');  '
+. 'window.onload = function() {'
+. 'document.getElementById("myLink").href=givenURL;'
+. 'console.log(givenURL)'
+. '}'
+. '</script>'
 . '</html>';
 
 /******************************************************************************
@@ -58,15 +66,20 @@ $strOut	= '<!DOCTYPE html>'
  ******************************************************************************/
 
  $id = uniqid();
- $result = $description . $id . '.html';
+//  $filteredLink = str_replace('/', '\\', $link);
+//  $filteredLink = str_replace('.', '(dot)', $filteredLink);
+//  $filteredLink = str_replace(':', ';', $filteredLink);
+
+//  $result = $description . '_'. $filteredLink . '+' . $id . '.html';
+$result = 'https://contentwarning.link/' . $description . '_' . $id . '.html' . '?r=' . $link;
+$resultBack = 'https://contentwarning.link/' . $description . '_' . $id . '.html';
+ // $result = 'https://contentwarning.link/' . $description . $id . '.html';
 
 
 
-$f = fopen($result, "w");
+$f = fopen($resultBack, "w");
 fwrite($f, $strOut);
 fclose($f);
-
- $result = 'https://contentwarning.link/' . $description . $id . '.html';
 
 
 /******************************************************************************
@@ -154,7 +167,7 @@ button {
 </style>
   </head>
 <body>
-<p><a href="'. $result . '">Click here</a> to test if the build worked. </p>
+<p><a href="'. $resultBack . '">Click here</a> to test if the build worked. </p>
 <input type="text" value="'. $result . '" id="myInput">
 <button onclick="myFunction()">Copy filtered link</button>
 

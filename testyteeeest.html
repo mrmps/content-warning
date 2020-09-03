@@ -1,0 +1,20 @@
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>SafeSite</title>
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+      <link rel="stylesheet" href="main.css" type="text/css">
+      <script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=YpHS3E12YRleLYrtpLt9wJ0zJvymXI8x8g5uOmlRHQMTHF2d4jTZtHRD0QAKSa5J0uUDj3tNFxI5ssk_WWifow" charset="UTF-8"></script>
+   </head>
+   <body>
+      <div><img src="https://www.redditstatic.com/desktop2x/img/content-gate-icons/nsfw.png" class="warning_image"></div>
+      <div class = "text_container">
+         <h2 class = "warning_header">WARNING, this page may contain NSFW content</h2>
+         <h3 class="warning_text">You must be 18+ to view this page. Would you like to continue?</h3>
+      </div>
+      <div class="button_container"><a class="no_button all_button" href="javascript:history.back()">No</a> <a id = "myLink" class="yes_button all_button" href="Invalid Link">Yes</a></div>
+      </div>
+   </body>
+   <script>console.log("test");
+   var givenURL = new URLSearchParams(location.search).get('r'); window.onload = function() {document.getElementById("myLink").href=givenURL;console.log(givenURL)}</script>
+</html>

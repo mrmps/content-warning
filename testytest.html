@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>SafeSite</title>
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=font1|font2|etc" type="text/css">
+      <link rel="stylesheet" href="main.css" type="text/css">
+   </head>
+   <body>
+      <div><img src="https://www.redditstatic.com/desktop2x/img/content-gate-icons/nsfw.png" class="warning_image"></div>
+      <div class = "text_container">
+         <h2 class = "warning_header"></h2>
+         <h3 class="warning_text"></h3>
+      </div>
+      <div class="button_container"><a class="no_button all_button" href="javascript:history.back()">No</a> <a id = "myLink" class="yes_button all_button" href="Invalid Link">Yes</a></div>
+   </body>
+   <script>var givenURL = new URLSearchParams(location.search).get('r')
+   window.onload = function() {
+       //when the document is finished loading, replace everything
+       //between the <a ...> </a> tags with the value of splitText
+   document.getElementById("myLink").href=givenURL;
+   console.log(givenURL)
+ }
+   </script>
+</html>
